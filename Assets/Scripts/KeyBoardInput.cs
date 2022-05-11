@@ -41,6 +41,7 @@ public class KeyBoardInput : IUserInput
     public bool KeyJumpEnable = true;       //ÌøÔ¾ÐÅºÅ¼¤»î×´Ì¬
     void Update()
     {
+        print(targetdright);
         KR.Tick(Input.GetKey(keyRun));
         KJ.Tick(Input.GetKey(keyJump));
         KA.Tick(Input.GetKey(keyAttack));

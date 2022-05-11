@@ -84,6 +84,8 @@ public class CameraController : MonoBehaviour
     public GameObject SubMenu;      //副菜单
     public bool isOpenMenu;
     public Animator animator;
+    public GameObject Blur;     //画面遮罩
+    public GameObject Blur_2;     //画面遮罩-2
 
 
     void Start()
@@ -99,6 +101,7 @@ public class CameraController : MonoBehaviour
 
         FishCount = 0;
         BeastCount = 0;
+
 
         //字典存储物品信息
         dictionary = new Dictionary<string, string>();
@@ -454,18 +457,21 @@ public class CameraController : MonoBehaviour
                 if (_Space)
                 {
                     show.Fade(Half_Lanting);
+                    Blur_2.SetActive(false);
                 }
                 break;
             case 2:
                 if (_Space)
                 {
                     show.Fade(LiHe_Letter);
+                    Blur_2.SetActive(false);
                 }
                 break;
             case 3:
                 if (_Space)
                 {
                     show.Fade(Poes);
+                    Blur_2.SetActive(false);
                 }
                 break;
             case 4:
@@ -503,12 +509,14 @@ public class CameraController : MonoBehaviour
                 {
                     show.Fade(False_Lanting);
                     Narrator_LookLanting.StartNarrator(Narrator_LookLanting._Narrator);     //开始显示真兰亭序线索旁白
+                    Blur_2.SetActive(false);
                 }
                 break;
             case 25:
                 if (_Space)
                 {
                     show.Fade(False_Lanting);
+                    Blur_2.SetActive(false);
                 }
                 break;
             default:
@@ -712,6 +720,7 @@ public class CameraController : MonoBehaviour
             BagSystem.SetActive(isOpen);
             KBI.mouseEnable = !isOpen;        //禁用摄像头移动
             KBI.KeyEnable = !isOpen;          //禁用键位输入
+            Blur_2.SetActive(isOpen);
             if (isOpen)
             {
                 Cursor.lockState = CursorLockMode.Confined;
@@ -730,12 +739,14 @@ public class CameraController : MonoBehaviour
             //SubMenu.SetActive(isOpenMenu);
             KBI.mouseEnable = !isOpenMenu;        //禁用摄像头移动
             KBI.KeyEnable = !isOpenMenu;          //禁用键位输入
+            Blur.SetActive(isOpenMenu);     //显示画面遮罩
             if (isOpenMenu)     //显示鼠标
             {
                 Cursor.lockState = CursorLockMode.Confined;
                 Cursor.visible = isOpenMenu;
                 isOpen = true;
                 animator.SetBool("isOpen", true);
+
             }
             else if (!isOpenMenu)
             {

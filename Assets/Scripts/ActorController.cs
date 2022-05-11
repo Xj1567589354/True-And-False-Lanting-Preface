@@ -33,6 +33,10 @@ public class ActorController : MonoBehaviour
     private CapsuleCollider col;
     private float LerpTarget;
 
+    float AttackTime = 0;
+    bool isAttackState;
+    public AudioManager AM;
+
 
     /*
      Awake---当一个脚本实例被载入时被调用
@@ -58,6 +62,16 @@ public class ActorController : MonoBehaviour
 
     void Update()
     {
+        if (isAttackState)
+        {
+            AttackTime += Time.deltaTime;
+            if (AttackTime >= 1.0f)
+            {
+                FindObjectOfType<AudioManager>().Play("攻击-3", true);
+                AttackTime = 0;
+                isAttackState = false;
+            }
+        }
         anim.SetBool("defense", Pi.Defense);
 
         if (Pi.Quit_Dialogue)
@@ -81,6 +95,8 @@ public class ActorController : MonoBehaviour
         {
             anim.SetTrigger("jump");
             CanAttack = false;
+
+            //FindObjectOfType<AudioManager>().Play("走路");
         }
 
         if (Pi.Attack && CheckState("Ground") && CanAttack)        //实现攻击控制
@@ -160,6 +176,8 @@ public class ActorController : MonoBehaviour
         Pi_Inertia.Inertia();
         thrustvec = new Vector3(0, jumpvelocity, 0);                //添加一个y分量上的力,向上
         trackDirection = true;
+
+        FindObjectOfType<AudioManager>().Play("跳跃", true);
     }
 
     public void OnRollEnter()
@@ -192,11 +210,13 @@ public class ActorController : MonoBehaviour
         CanAttack = true;
         col.material = FractionOne;
         trackDirection = false;
+        AM.isGround = true;
     }
 
     public void OnExitGround()
     {
         col.material = FractionZero;            //跳跃使摩擦力为零，减少摩擦力影响
+        AM.isGround = false;
     }
 
     public void OnEnterFall()
@@ -209,10 +229,30 @@ public class ActorController : MonoBehaviour
         thrustvec = Model.transform.forward * anim.GetFloat("jabvelocity");           //添加一个相对于向前矢量的向后矢量
     }
 
+    /*
+     分别对应一段攻击、二段攻击和三段攻击
+     */
     public void OnEnterAttack1hA()
     {
         Pi.InputEnabled = false;
         LerpTarget = 1.0f;
+        FindObjectOfType<AudioManager>().Play("攻击-1", true);
+    }
+
+    public void OnEnterAttack2hA()
+    {
+        Pi.InputEnabled = false;
+        LerpTarget = 1.0f;
+        FindObjectOfType<AudioManager>().Play("攻击-2", true);
+    }
+
+    public void OnEnterAttack3hA()
+    {
+        Pi.InputEnabled = false;
+        LerpTarget = 1.0f;
+
+        isAttackState = true;
+
     }
 
     public void OnAttack1hAUpdate()

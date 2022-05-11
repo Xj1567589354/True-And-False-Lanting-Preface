@@ -38,8 +38,8 @@ public abstract class IUserInput : MonoBehaviour
     [Space(5)]
     [Header("=====  Others =====")]
     public bool InputEnabled = true;
-    protected float targetdright;
-    protected float targetdup;
+    public float targetdright;
+    public float targetdup;
     protected float velocityDup;
     protected float velocityDright;
     /// <summary>
