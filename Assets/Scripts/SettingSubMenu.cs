@@ -38,7 +38,7 @@ public class SettingSubMenu : MonoBehaviour
         //camcon.SubMenu.SetActive(camcon.isOpenMenu);
         KBI.mouseEnable = true;        //禁用摄像头移动
         KBI.KeyEnable = true;          //禁用键位输入
-        camcon.Blur.SetActive(false);
+        camcon.BlurImage_SubMenu.SetActive(false);
         if (camcon.isOpenMenu)  //显示鼠标
         {
             camcon.isOpen = true;

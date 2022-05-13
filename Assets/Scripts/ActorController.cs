@@ -65,7 +65,7 @@ public class ActorController : MonoBehaviour
         if (isAttackState)
         {
             AttackTime += Time.deltaTime;
-            if (AttackTime >= 1.0f)
+            if (AttackTime >= 0.8f)
             {
                 FindObjectOfType<AudioManager>().Play("¹¥»÷-3", true);
                 AttackTime = 0;

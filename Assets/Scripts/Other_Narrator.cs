@@ -13,6 +13,7 @@ public class Other_Narrator : MonoBehaviour
     public float time = 0;
     public TaskList TaskList;
     KeyBoardInput KBI;       //键位控制
+    public CameraController camcon;
 
     private void Start()
     {
@@ -36,6 +37,7 @@ public class Other_Narrator : MonoBehaviour
 
                 TaskList.ElapseTime = 0;                //任务计时清零
                 TaskList.Count++;       //显示下一步任务提示
+                camcon.BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);    //线索旁白消失
             }
         }
     }

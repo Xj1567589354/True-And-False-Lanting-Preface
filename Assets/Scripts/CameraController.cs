@@ -84,9 +84,16 @@ public class CameraController : MonoBehaviour
     public GameObject SubMenu;      //副菜单
     public bool isOpenMenu;
     public Animator animator;
-    public Animator animator_2;
-    public GameObject Blur;     //画面遮罩
-    public GameObject Blur_2;     //画面遮罩-2
+    public Animator animator_2;     //裴度动画器
+    public Animator animator_3;     //萧翼动画器
+    public Animator animator_4;     //商贩动画器
+    public Animator animator_5;     //目击者动画器
+    public Animator animator_6;     //唐太宗动画器
+    public Animator animator_7;     //韩湘子动画器
+
+    public GameObject BlurImage_SubMenu;     //画面遮罩
+    public GameObject BlurImage_ThingShow;     //画面遮罩-2
+    public GameObject BlurImage_Bag;     //画面遮罩-2
 
 
     void Start()
@@ -214,6 +221,8 @@ public class CameraController : MonoBehaviour
 
                                     KBI.mouseEnable = false;     //禁用摄像头旋转
                                     KBI.KeyEnable = false;       //禁用键位输入
+
+                                    BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver); //物品遮罩显示
                                     break;
                                 case "Letter":
                                     TaskList.ElapseTime = 0;        //任务计时清零
@@ -225,6 +234,8 @@ public class CameraController : MonoBehaviour
                                     ShowNumber = 2;
                                     KBI.mouseEnable = false;     //禁用摄像头旋转
                                     KBI.KeyEnable = false;       //禁用键位输入
+
+                                    BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
                                     break;
                                 case "Letter_Poes":
                                     TaskList.ElapseTime = 0;        //任务计时清零
@@ -236,6 +247,8 @@ public class CameraController : MonoBehaviour
                                     ShowNumber = 3;
                                     KBI.mouseEnable = false;     //禁用摄像头旋转
                                     KBI.KeyEnable = false;       //禁用键位输入
+
+                                    BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
                                     break;
                                 case "Lanting_Fragment":
                                     TaskList.ElapseTime = 0;        //任务计时清零
@@ -248,6 +261,8 @@ public class CameraController : MonoBehaviour
                                     KBI.mouseEnable = false;     //禁用摄像头旋转
                                     KBI.KeyEnable = false;       //禁用键位输入
 
+                                    BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
+
                                     break;
                                 case "Lanting":
                                     TaskList.ElapseTime = 0;        //任务计时清零
@@ -259,6 +274,8 @@ public class CameraController : MonoBehaviour
                                     ShowNumber = 25;     //退出查看状态
                                     KBI.mouseEnable = false;     //禁用摄像头旋转
                                     KBI.KeyEnable = false;       //禁用键位输入
+
+                                    BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
 
                                     break;
                                 default:
@@ -281,6 +298,9 @@ public class CameraController : MonoBehaviour
                                 //碎片1淡入淡出
                                 Lanting_1.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
                                 ShowText2.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
+
+                                BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver); //物品遮罩显示
+
                                 Menu.MoneyNumber -= 50;        //银两减50
                                 Menu.MoneyShow.text = Menu.MoneyNumber.ToString();     //更新当前银两数量
                                 ShowNumber = 4;
@@ -333,6 +353,8 @@ public class CameraController : MonoBehaviour
                                         ShowText2.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
                                         ShowNumber = 5;
 
+                                        BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
+
                                         KBI.mouseEnable = false;     //禁用摄像头旋转
                                         KBI.KeyEnable = false;       //禁用键位输入
 
@@ -384,6 +406,8 @@ public class CameraController : MonoBehaviour
                                         ShowText2.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
                                         ShowNumber = 6;
 
+                                        BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);
+
                                         KBI.mouseEnable = false;     //禁用摄像头旋转
                                         KBI.KeyEnable = false;       //禁用键位输入
 
@@ -423,8 +447,10 @@ public class CameraController : MonoBehaviour
 
                                         Hint_Interact.text = "归还成功！";   //动态更改物品提示信息
                                         Hint_Interact.enabled = true;
+                                        InventoryManager.RefreshItem();     //刷新背包
 
                                         Narrator_Success.StartNarrator(Narrator_Success._Narrator);     //开始显示游戏结束旁白
+                                        BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);       //旁白遮罩显示
                                     }
                                     else
                                     {
@@ -458,21 +484,21 @@ public class CameraController : MonoBehaviour
                 if (_Space)
                 {
                     show.Fade(Half_Lanting);
-                    Blur_2.SetActive(false);
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver); //淡出物品遮罩
                 }
                 break;
             case 2:
                 if (_Space)
                 {
                     show.Fade(LiHe_Letter);
-                    Blur_2.SetActive(false);
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
                 }
                 break;
             case 3:
                 if (_Space)
                 {
                     show.Fade(Poes);
-                    Blur_2.SetActive(false);
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
                 }
                 break;
             case 4:
@@ -481,6 +507,8 @@ public class CameraController : MonoBehaviour
                     show.Fade(Lanting_1);
                     KBI.mouseEnable = true;     //启用摄像头旋转
                     KBI.KeyEnable = true;       //启用键位输入
+
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
                 }
                 break;
             case 5:
@@ -489,6 +517,8 @@ public class CameraController : MonoBehaviour
                     show.Fade(Lanting_2);
                     KBI.mouseEnable = true;     //启用摄像头旋转
                     KBI.KeyEnable = true;       //启用键位输入
+
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
                 }
                 break;
             case 6:
@@ -497,12 +527,16 @@ public class CameraController : MonoBehaviour
                     show.Fade(Lanting_3);
                     KBI.mouseEnable = true;     //启用摄像头旋转
                     KBI.KeyEnable = true;       //启用键位输入
+
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
                 }
                 break;
             case 7:
                 if (_Space)
                 {
                     show.Fade(Lanting_4);
+
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
                 }
                 break;
             case 24:
@@ -510,14 +544,13 @@ public class CameraController : MonoBehaviour
                 {
                     show.Fade(False_Lanting);
                     Narrator_LookLanting.StartNarrator(Narrator_LookLanting._Narrator);     //开始显示真兰亭序线索旁白
-                    Blur_2.SetActive(false);
                 }
                 break;
             case 25:
                 if (_Space)
                 {
                     show.Fade(False_Lanting);
-                    Blur_2.SetActive(false);
+                    BlurImage_ThingShow.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
                 }
                 break;
             default:
@@ -602,6 +635,11 @@ public class CameraController : MonoBehaviour
 
             PlayerModel.SetActive(false);
             animator_2.SetBool("IsFocus", true);
+            animator_3.SetBool("IsPray", true);
+            animator_4.SetBool("IsBuy", true);
+            animator_5.SetBool("IsSad", true);
+            animator_6.SetBool("IsStretch", true);
+            animator_7.SetBool("IsGestrue", true);
 
             TextHint.enabled = false;       //隐藏人物交互信息
             /*
@@ -629,6 +667,11 @@ public class CameraController : MonoBehaviour
                 TaskList.Count++;       //显示下一步任务提示
 
                 animator_2.SetBool("IsFocus", false);
+                animator_3.SetBool("IsPray", false);
+                animator_4.SetBool("IsBuy", false);
+                animator_5.SetBool("IsSad", false);
+                animator_6.SetBool("IsStretch", false);
+                animator_7.SetBool("IsGestrue", false);
             }
         }
         if (!isOpen && _Show.StartGame == true)
@@ -724,7 +767,7 @@ public class CameraController : MonoBehaviour
             BagSystem.SetActive(isOpen);
             KBI.mouseEnable = !isOpen;        //禁用摄像头移动
             KBI.KeyEnable = !isOpen;          //禁用键位输入
-            Blur_2.SetActive(isOpen);
+            BlurImage_Bag.SetActive(isOpen);
             if (isOpen)
             {
                 Cursor.lockState = CursorLockMode.Confined;
@@ -743,7 +786,7 @@ public class CameraController : MonoBehaviour
             //SubMenu.SetActive(isOpenMenu);
             KBI.mouseEnable = !isOpenMenu;        //禁用摄像头移动
             KBI.KeyEnable = !isOpenMenu;          //禁用键位输入
-            Blur.SetActive(isOpenMenu);     //显示画面遮罩
+            BlurImage_SubMenu.SetActive(isOpenMenu);     //显示画面遮罩
             if (isOpenMenu)     //显示鼠标
             {
                 Cursor.lockState = CursorLockMode.Confined;

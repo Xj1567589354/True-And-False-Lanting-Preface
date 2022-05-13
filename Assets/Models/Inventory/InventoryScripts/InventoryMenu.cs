@@ -14,6 +14,7 @@ public class InventoryMenu : MonoBehaviour
     public ItemOnWorld RightHalfLanting;        //右半边兰亭序
     public ItemOnWorld False_Lanting;     //假兰亭序
     public KeyBoardInput KBI;
+    public GameObject BlurImage_Bag;
 
     private void Awake()
     {
@@ -34,11 +35,15 @@ public class InventoryMenu : MonoBehaviour
         {
             if (item.check)
             {
+
                 ItemCheck();
                 camcon.isOpen = false;      //隐藏背包
                 camcon.BagSystem.SetActive(camcon.isOpen);
 
                 camcon.ShowNumber = SlotNumber;  //退出查看状态
+
+                camcon.BlurImage_Bag.SetActive(false);      //背包遮罩消失
+                camcon.BlurImage_ThingShow.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver); //物品遮罩显示
             }
             else
             {
@@ -179,10 +184,14 @@ public class InventoryMenu : MonoBehaviour
                     camcon.TaskList.Count++;       //显示下一步任务提示
 
                     camcon.BagSystem.SetActive(false);      //隐藏背包
+
+                    BlurImage_Bag.SetActive(false);     //背景虚化关闭
                     camcon.isOpen = false;          //防止打开背包出问题
 
                     KBI.mouseEnable = true;        //启用摄像头移动
                     KBI.KeyEnable = true;          //启用键位输入
+
+
 
                     Cursor.lockState = CursorLockMode.Confined;     //开启鼠标显示
                     Cursor.visible = true; ;
