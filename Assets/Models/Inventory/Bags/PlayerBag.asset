@@ -13,10 +13,7 @@ MonoBehaviour:
   m_Name: PlayerBag
   m_EditorClassIdentifier: 
   itemList:
-  - {fileID: 11400000, guid: 64ca957373f0d67499f845718969c5e5, type: 2}
-  - {fileID: 11400000, guid: 028bbd8aa592aee45ada22068ccfe347, type: 2}
-  - {fileID: 11400000, guid: c74a05fd7452c884bae974fc2d8fcca1, type: 2}
+  - {fileID: 11400000, guid: 3927c8ff988d8f945b5afefe42f7c154, type: 2}
+  - {fileID: 11400000, guid: 2d86409237e0dd7428344bf6b9b9902e, type: 2}
   - {fileID: 11400000, guid: f57a3b32e2ea4164593fb6166a0f41dd, type: 2}
-  - {fileID: 11400000, guid: 6f4059bc51021194ebe2b48b36309d49, type: 2}
-  - {fileID: 11400000, guid: 750600698c76658429eb5f9e783c2da2, type: 2}
-  - {fileID: 11400000, guid: c9eba3ea18a8d7b478144c400ea6dd22, type: 2}
+  - {fileID: 11400000, guid: b6388eef1f7163447a510e1e66a807f4, type: 2}

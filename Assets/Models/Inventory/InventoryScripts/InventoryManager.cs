@@ -23,12 +23,29 @@ public class InventoryManager : MonoBehaviour
             Destroy(this);
         instance = this;
     }
+    private void Update()
+    {
+
+    }
 
     private void OnEnable()     //初始状态展示当前背包列表物品
     {
         RefreshItem();
-        instance.InventorySlotInfo.text = "";       //初始化文本描述为空
-        instance.InventorySlotImage.texture = null;
+
+        for (int i = 0; i < instance.playerBag.itemList.Count; i++)
+        {
+            if (instance.playerBag.itemList[i] != null)     //如果不为空的话，背包图片描述展示初始化为背包列表第一个元素
+            {
+                instance.InventorySlotInfo.text = instance.playerBag.itemList[i].itemInfo;
+                instance.InventorySlotImage.texture = instance.playerBag.itemList[i].itemImage;
+                break;
+            }
+            else   //如果为空。背包图片描述展示显示为空白
+            {
+                instance.InventorySlotInfo.text = "";
+                instance.InventorySlotImage.texture = null;
+            }
+        }
     }
 
     /// <summary>

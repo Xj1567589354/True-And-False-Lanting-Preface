@@ -187,6 +187,7 @@ public class ActorController : MonoBehaviour
         trackDirection = true;
     }
 
+
     public void OnJabEnter()
     {
         Pi_Inertia.Inertia();
@@ -224,6 +225,7 @@ public class ActorController : MonoBehaviour
         Pi_Inertia.Inertia();
     }
 
+
     public void OnUpdateEnter()
     {
         thrustvec = Model.transform.forward * anim.GetFloat("jabvelocity");           //添加一个相对于向前矢量的向后矢量
@@ -237,6 +239,8 @@ public class ActorController : MonoBehaviour
         Pi.InputEnabled = false;
         LerpTarget = 1.0f;
         FindObjectOfType<AudioManager>().Play("攻击-1", true);
+
+        FindObjectOfType<AudioManager>().Play("跑", false);
     }
 
     public void OnEnterAttack2hA()

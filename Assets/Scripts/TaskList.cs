@@ -27,7 +27,7 @@ public class TaskList : MonoBehaviour
             case 1:
                 Task_Title.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);       //任务标题显示
                 Sign.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);     //任务标题提示图片
-                Task_Context.text = "与裴度对话";
+                Task_Context.text = "前往裴府书房二楼与叔父裴度对话";
                 Task_Context.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);       //任务提示更新
                 break;
             case 2:

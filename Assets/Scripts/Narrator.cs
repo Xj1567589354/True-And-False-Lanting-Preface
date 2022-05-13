@@ -15,6 +15,8 @@ public class Narrator : MonoBehaviour
     public TaskList TaskList;
     KeyBoardInput KBI;       //键位控制
 
+    public GameObject BlurImage;
+
     private void Start()
     {
         Sentences = new Queue<string>();
@@ -39,6 +41,8 @@ public class Narrator : MonoBehaviour
 
                 TaskList.ElapseTime = 0;                //任务计时清零
                 TaskList.Count++;       //显示下一步任务提示
+
+                BlurImage.gameObject.SendMessage("UIHide", SendMessageOptions.DontRequireReceiver);
             }
         }
     }
@@ -51,6 +55,7 @@ public class Narrator : MonoBehaviour
         if (other.gameObject == PlayerHandle)
         {
             StartNarrator(_Narrator);       //开始旁白
+            BlurImage.gameObject.SendMessage("UIShow", SendMessageOptions.DontRequireReceiver);       //旁白显示
         }
     }
 

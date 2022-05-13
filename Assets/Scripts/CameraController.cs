@@ -84,6 +84,7 @@ public class CameraController : MonoBehaviour
     public GameObject SubMenu;      //副菜单
     public bool isOpenMenu;
     public Animator animator;
+    public Animator animator_2;
     public GameObject Blur;     //画面遮罩
     public GameObject Blur_2;     //画面遮罩-2
 
@@ -600,7 +601,8 @@ public class CameraController : MonoBehaviour
             camera.transform.LookAt(target.transform.position + new Vector3(0, 1, 0));    //减少相机部分抖动
 
             PlayerModel.SetActive(false);
-            //DialogueBox.SetActive(true);        //显示对话框
+            animator_2.SetBool("IsFocus", true);
+
             TextHint.enabled = false;       //隐藏人物交互信息
             /*
              隐藏NPC提示信息
@@ -625,6 +627,8 @@ public class CameraController : MonoBehaviour
 
                 TaskList.ElapseTime = 0;        //任务计时清零
                 TaskList.Count++;       //显示下一步任务提示
+
+                animator_2.SetBool("IsFocus", false);
             }
         }
         if (!isOpen && _Show.StartGame == true)

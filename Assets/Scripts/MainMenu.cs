@@ -38,4 +38,11 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Quit!");
         Application.Quit();
     }
+    /// <summary>
+    /// 菜单点击音效
+    /// </summary>
+    public void ClickSound()
+    {
+        FindObjectOfType<AudioManager>().Play("点击", true);      //菜单点击
+    }
 }
