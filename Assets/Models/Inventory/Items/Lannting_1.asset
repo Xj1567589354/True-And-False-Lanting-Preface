@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lannting_1
   m_EditorClassIdentifier: 
   itemName: "\u5170\u4EAD\u5E8F\u788E\u7247"
-  itemNumber: 5
+  itemNumber: 1
   itemInfo: "\u8FD9\u662F\u4E00\u679A\u300A\u5170\u4EAD\u5E8F\u300B\u788E\u7247\uFF0C\u96C6\u9F50\u56DB\u5F20\u6D41\u843D\u5728\u5916\u7684\u788E\u7247\uFF0C\u5373\u53EF\u5408\u5E76\u6210\u534A\u5F20\u300A\u5170\u4EAD\u5E8F\u300B\u5B57\u8FF9\uFF01"
   itemImage: {fileID: 2800000, guid: 68c7869f6cdf3424584e126df3cc3660, type: 3}
   Number: 13
