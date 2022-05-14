@@ -155,6 +155,7 @@ public class CameraController : MonoBehaviour
         dictionary.Add("Bear", "野生熊");
         dictionary.Add("Salamander", "壁虎");
         dictionary.Add("Goat", "野生山羊");
+        dictionary.Add("Wolf", "大灰狼");
 
         TextHint.enabled = false;
         TextKey_T.enabled = false;
