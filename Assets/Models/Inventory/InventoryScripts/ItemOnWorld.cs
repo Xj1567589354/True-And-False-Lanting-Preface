@@ -8,9 +8,9 @@ public class ItemOnWorld : MonoBehaviour
     public Inventory playerBag;
     public KeyBoardInput KBI;
 
-    public void Update()
+    public void Start()
     {
-
+        thisItem.itemNumber = 1;       //初始化状态物品数量为1
     }
     /// <summary>
     /// 添加事件
