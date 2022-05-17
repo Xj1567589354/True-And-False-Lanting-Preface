@@ -54,6 +54,6 @@ public class SettingSubMenu : MonoBehaviour
     /// </summary>
     public void ReturnMainMenu()
     {
-        SceneManager.LoadScene(1);      //重新加载场景
+        SceneManager.LoadScene(0);      //重新加载场景
     }
 }

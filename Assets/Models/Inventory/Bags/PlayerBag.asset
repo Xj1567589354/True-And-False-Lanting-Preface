@@ -12,11 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d0b8b7dc5a89364a9413e8852914e9e, type: 3}
   m_Name: PlayerBag
   m_EditorClassIdentifier: 
-  itemList:
-  - {fileID: 11400000, guid: 3927c8ff988d8f945b5afefe42f7c154, type: 2}
-  - {fileID: 11400000, guid: 028bbd8aa592aee45ada22068ccfe347, type: 2}
-  - {fileID: 11400000, guid: f57a3b32e2ea4164593fb6166a0f41dd, type: 2}
-  - {fileID: 11400000, guid: ab9c9e3d22d439d498f32c0278c2d7d0, type: 2}
-  - {fileID: 11400000, guid: c74a05fd7452c884bae974fc2d8fcca1, type: 2}
-  - {fileID: 11400000, guid: c9eba3ea18a8d7b478144c400ea6dd22, type: 2}
-  - {fileID: 11400000, guid: b4769fa716e7d0644b5cc44b183e0a83, type: 2}
+  itemList: []
